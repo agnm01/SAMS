@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SAMS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/articles.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic" />
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        <!-- Navbar -->
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="index.html">SAMS</a>
+            <ul id="menu">
+                <li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
+                <li class="nav-author-page" role="presentation"><a href="author.html">Author</a></li>
+                <li class="nav-about-us-page" role="presentation"><a href="about.html">About</a></li>
+                <li class="nav-contact-page" role="presentation"><a href="contact.html">Contact</a></li>
+                <li class="nav-subscribe-page" role="presentation"><a href="subscribe.html">Subscribe</a></li>
+                <span class="socialheader">
+		        <a href="#"><span class='symbol'>circletwitterbird</span></a>
+                <a href="#"><span class='symbol'>circlefacebook</span></a>
+                <a href="mailto:andreigabrielnegreanumaior@gmail.com"><span class='symbol'>circleemail</span></a>
+                </span>
+            </ul>
+        </nav>
+        <!-- Header -->
+        <header class="main-header " style="background-image: url(assets/img/intro.jpg)">
+            <div class="vertical">
+                <div class="main-header-content inner">
+                    <h1 class="page-title">SAMS</h1>
+                    <div class="entry-title-divider">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <h2 class="page-description">Society of Arts, Math & Science</h2>
+                </div>
+            </div>
+            <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+        </header>
+
+        <!-- Grid of articles -->
+        <main id="content" class="content" role="main">
+            <div class="wraps">
+                <!-- short version of articles -->
+                <div class="grid" id="articles">
+
+                </div>
+                <!-- pagination for navigation between pages of articles -->
+                <nav class="pagination" role="navigation" id="pagination">
+
+                </nav>
+            </div>
+            <!-- modal containing full content of an article -->
+            <div class="modal" id="articleContentModal">
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer clearfix">
+            <a href="#top" id="back-to-top" class="back-top"></a>
+            <div class="text-center">
+                <p>Copyright &copy; 2021 </p>
+                <p>Negreanu-Maior Andrei Gabriel</p>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/masonry.min.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="assets/js/articles/articles.js"></script>
+    <script>
+        // Function for displaying a page of articles
+        function showPage(page, articlesArray) {
+            const articlesPerPage = 9;
+            let articlesContainer = document.getElementById("articles");
+            let content = '';
+            let start = (page - 1) * articlesPerPage;
+            let stop = start + articlesPerPage - 1;
+
+            if (stop > articles.length - 1) {
+                stop = articles.length - 1;
+            }
+            for (let i = start; i <= stop; i++) content += displayArticle(articles[i], i);
+
+            articlesContainer.innerHTML = content;
+        }
+
+        // Displaying pagination
+        let pagination = document.getElementById("pagination");
+        pagination.innerHTML = displayPagination();
+
+        // Initially, show page 1
+        showPage(1, articles);
+    </script>
+</body>
+
+</html>
